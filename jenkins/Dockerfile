@@ -1,5 +1,4 @@
-# FROM jenkins:2.32.3
-FROM jenkinsci/blueocean:1.0.0-b24
+FROM jenkins:2.32.3
 
 USER root
 RUN apt-get -qq update \
