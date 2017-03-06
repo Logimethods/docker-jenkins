@@ -9,12 +9,8 @@ pipeline {
         }
         stage('docker') {
             agent any
-            try {
+            steps {
                 sh 'docker --version'
-            }
-            catch (exc) {
-                echo 'Something failed, I should sound the klaxons!'
-                throw
             }
         }
     }
