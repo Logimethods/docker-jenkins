@@ -4,6 +4,9 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn --version'
+                sh 'docker --version'
+                sh 'docker images'
+                sh 'docker ps'
             }
         }
     }
