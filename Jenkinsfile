@@ -8,7 +8,7 @@ pipeline {
         }
         stage('docker') {
             try {
-                docker --version
+                sh 'docker --version'
             }
             catch (exc) {
                 echo "$exc"
