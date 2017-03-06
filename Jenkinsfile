@@ -13,7 +13,7 @@ pipeline {
                 sh 'docker --version'
             }
             catch (exc) {
-                echo "$exc"
+                echo 'Something failed, I should sound the klaxons!'
             }
         }
     }
