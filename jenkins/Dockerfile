@@ -7,6 +7,6 @@ RUN apt-get -qq update \
 
 RUN curl -sSL https://get.docker.com/ | sh
 
-RUN usermod -a -G staff jenkins
+RUN usermod -a -G staff,docker jenkins
 
 USER jenkins
