@@ -1,4 +1,4 @@
-FROM jenkinsci/blueocean:latest
+FROM jenkinsci/blueocean:lts
 
 USER root
 
