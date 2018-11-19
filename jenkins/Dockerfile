@@ -1,4 +1,4 @@
-FROM jenkins:latest
+FROM jenkins/jenkins:latest
 
 USER root
 RUN apt-get -qq update \
