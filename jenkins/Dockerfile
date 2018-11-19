@@ -1,4 +1,4 @@
-FROM jenkins:latest
+FROM jenkins/jenkins:2.143-jdk11
 
 USER root
 RUN apt-get -qq update \
