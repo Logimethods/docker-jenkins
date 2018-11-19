@@ -19,5 +19,5 @@ To allow Docker based builds through a Docker running Jenkins Server (see https:
 
 `logimethods/blueocean` comes in two different flavors:
 - `logimethods/blueocean:latest` (latest version of BlueOcean)
-- `logimethods/blueocean:lts` (lts version of BlueOcean)
+- `logimethods/blueocean:lts` (our own "lts" version of BlueOcean)
 
