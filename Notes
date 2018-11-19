@@ -1,0 +1,44 @@
+FROM jenkins:2.32.3
+
+#RUN /usr/local/bin/install-plugins.sh docker-slaves github-branch-source:1.8
+
+USER root
+RUN apt-get -qq update \
+   && apt-get -qq -y install \
+   curl
+
+RUN curl -sSL https://get.docker.com/ | sh
+
+#RUN gpasswd -a jenkins docker
+#RUN usermod -a -G docker jenkins
+RUN usermod -a -G staff jenkins
+
+# Give jenkins access to docker
+# RUN groupadd -g 997 docker
+# RUN gpasswd -a jenkins docker
+
+
+USER jenkins
+
+# docker run --rm -p 8080:8080 -p 4040:4040 -v /var/run/docker.sock:/var/run/docker.sock --group-add=$(stat -c %g /var/run/docker.sock) jenkins_docker docker ps
+
+# docker run --rm -p 8080:8080 -p 4040:4040 -v /var/run/docker.sock:/var/run/docker.sock --group-add=$(stat %g /var/run/docker.sock) jenkins_docker docker ps
+
+# docker run --rm -p 8080:8080 -p 4040:4040 -v /var/run/docker.sock:/var/run/docker.sock --group-add=$(stat -f %g /var/run/docker.sock) jenkins_docker docker ps
+
+—————————
+
+--group-add=$(stat -f %g /var/run/docker.sock)
+
+—————
+
+> docker run --rm -p 8080:8080 -p 4040:4040 -v /var/run/docker.sock:/var/run/docker.sock --group-add=$(stat -f %g /var/run/docker.sock) jenkins_docker stat /var/run/docker.sock
+  File: ‘/var/run/docker.sock’
+  Size: 0         	Blocks: 0          IO Block: 4096   socket
+Device: 11h/17d	Inode: 16429       Links: 1
+Access: (0660/srw-rw----)  Uid: (    0/    root)   Gid: (   50/   staff)
+Access: 2017-03-02 20:13:02.116228653 +0000
+Modify: 2017-03-02 20:13:02.086228654 +0000
+Change: 2017-03-02 20:13:02.086228654 +0000
+ Birth: -
+
